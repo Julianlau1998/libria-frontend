@@ -1,8 +1,8 @@
 module.exports = {
     pwa: {
       name: 'Libria',
-      themeColor: '#000000',
-      msTileColor: '#000000',
+      themeColor: '#ffffff',
+      msTileColor: '#ffffff',
       backgroundColor: '#ffffff',
       appleMobileWebAppCapable: 'yes',
       appleMobileWebAppStatusBarStyle: 'default',
