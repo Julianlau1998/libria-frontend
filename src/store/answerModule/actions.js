@@ -21,7 +21,7 @@ const getUserId = () => {
 export async function getAll ({ commit }) {
   commit('GET_ANSWERS')
   axios
-    .get('api.libria-app.com/api/answers')
+    .get('https://api.libria-app.com/api/answers')
     .then(response => {
       commit('RECEIVE_ANSWERS', response.data)
     })
@@ -32,7 +32,7 @@ export async function getAll ({ commit }) {
 export function getAllByTopic ({ commit }, payload) {
   commit('GET_ANSWERS')
   axios
-    .get(`api.libria-app.com/api/answers/${payload.topicId}`, {headers: {userId: payload.userId}})
+    .get(`https://api.libria-app.com/api/answers/${payload.topicId}`, {headers: {userId: payload.userId}})
     .then(response => {
       commit('RECEIVE_ANSWERS', response.data)
     })
@@ -43,7 +43,7 @@ export function getAllByTopic ({ commit }, payload) {
 export function getOne ({ commit }, id) {
   commit('GET_ANSWER')
   axios
-    .get(`api.libria-app.com/api/answers/${id}`)
+    .get(`https://api.libria-app.com/api/answers/${id}`)
     .then(response => {
       commit('ANSWER_ANSWER', response.data)
     })
@@ -54,7 +54,7 @@ export function getOne ({ commit }, id) {
 export function post ({ commit }, answer) {
   commit('POST_ANSWER', answer)
   axios
-    .post('api.libria-app.com/api/answer', answer, getUserId())
+    .post('https://api.libria-app.com/api/answer', answer, getUserId())
     .then(respnse => {
       answer.id = respnse.data
       commit('ANSWER_POSTED', answer)
@@ -66,7 +66,7 @@ export function post ({ commit }, answer) {
 export function deleteOne ({ commit }, answer) {
   commit('DELETE_ANSWER', answer.id)
   axios
-    .delete(`api.libria-app.com/api/answer/${answer.id}`, answer, getUserId())
+    .delete(`https://api.libria-app.com/api/answer/${answer.id}`, answer, getUserId())
     .then(function () {
       commit('ANSWER_DELETED')
     })
@@ -77,7 +77,7 @@ export function deleteOne ({ commit }, answer) {
 export function put ({ commit }, answer) {
   commit('PUT_ANSWER')
   axios
-    .put(`api.libria-app.com/api/answer/${answer.id}`, answer, getUserId())
+    .put(`https://api.libria-app.com/api/answer/${answer.id}`, answer, getUserId())
     .then(function () {
       commit('ANSWER_PUT')
     })

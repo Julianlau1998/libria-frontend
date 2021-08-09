@@ -12,7 +12,7 @@ const getUserId = () => {
 export function getAllByAnswer ({ commit }, answerId) {
   commit('GET_VOTES')
   axios
-    .get(`api.libria-app.com/api/votes/${answerId}`)
+    .get(`https://api.libria-app.com/api/votes/${answerId}`)
     .then(response => {
       commit('RECEIVE_VOTES', response.data)
     })
@@ -23,7 +23,7 @@ export function getAllByAnswer ({ commit }, answerId) {
 export function post ({ commit }, vote) {
   commit('POST_VOTE', vote)
   axios
-    .post('api.libria-app.com/api/vote', vote, getUserId())
+    .post('https://api.libria-app.com/api/vote', vote, getUserId())
     .then(respnse => {
       vote.id = respnse.data
       commit('VOTE_POSTED', vote)
@@ -35,7 +35,7 @@ export function post ({ commit }, vote) {
 export function put ({ commit }, vote) {
   commit('PUT_VOTE')
   axios
-    .put(`api.libria-app.com/api/vote/${vote.id}`, vote, getUserId())
+    .put(`https://api.libria-app.com/api/vote/${vote.id}`, vote, getUserId())
     .then(function () {
       commit('VOTE_PUT')
     })
