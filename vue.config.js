@@ -3,7 +3,7 @@ module.exports = {
       name: 'Libria',
       themeColor: '#ffffff',
       msTileColor: '#ffffff',
-      backgroundColor: '#ffffff',
+      backgroundColor: '#c6c6c6',
       appleMobileWebAppCapable: 'yes',
       appleMobileWebAppStatusBarStyle: 'default',
       workboxPluginMode: 'InjectManifest',
@@ -16,7 +16,7 @@ module.exports = {
       disableHostCheck: true,
       proxy: {
         '^/api/*': {
-          target: 'http://localhost:1324',
+          target: 'https://libria-service-new-q2ldqcxzza-ez.a.run.app',
           changeOrigin: true
         }
       }

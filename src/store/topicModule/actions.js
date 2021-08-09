@@ -22,7 +22,7 @@ const getUserId = () => {
 export async function getAll ({ commit }) {
   commit('GET_TOPICS')
   axios
-    .get('/api/topics')
+    .get('api.libria-app.com/api/topics')
     .then(response => {
       commit('RECEIVE_TOPICS', response.data)
     })
@@ -33,7 +33,7 @@ export async function getAll ({ commit }) {
 export function getOne ({ commit }, id) {
   commit('GET_TOPIC')
   axios
-    .get(`/api/topic/${id}`)
+    .get(`api.libria-app.com/api/topic/${id}`)
     .then(response => {
       commit('RECEIVE_TOPIC', response.data)
     })
@@ -44,7 +44,7 @@ export function getOne ({ commit }, id) {
 export function getRandom ({ commit }) {
   commit('GET_RANDOM_TOPIC')
   axios
-    .get(`/api/randomTopic`)
+    .get(`api.libria-app.com/api/randomTopic`)
     .then(response => {
       commit('RECEIVE_RANDOM_TOPIC', response.data)
     })
@@ -55,7 +55,7 @@ export function getRandom ({ commit }) {
 export function post ({ commit }, topic) {
   commit('POST_TOPIC', topic)
   axios
-    .post('/api/topic', topic)
+    .post('api.libria-app.com/api/topic', topic)
     .then(response => {
       topic.id = response.data
       commit('TOPIC_POSTED', topic)
@@ -67,7 +67,7 @@ export function post ({ commit }, topic) {
 export function deleteOne ({ commit }, answer) {
   commit('DELETE_TOPIC', answer.id)
   axios
-    .delete(`/api/topic/${answer.id}`, answer, getUserId())
+    .delete(`api.libria-app.com/api/topic/${answer.id}`, answer, getUserId())
     .then(function () {
       commit('TOPIC_DELETED')
     })
@@ -78,7 +78,7 @@ export function deleteOne ({ commit }, answer) {
 export function put ({ commit }, topic) {
   commit('PUT_TOPIC')
   axios
-    .put(`/api/topic/${topic.id}`, topic, getUserId())
+    .put(`api.libria-app.com/api/topic/${topic.id}`, topic, getUserId())
     .then(function () {
       commit('TOPIC_PUT')
     })
