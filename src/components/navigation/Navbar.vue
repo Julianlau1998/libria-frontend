@@ -23,7 +23,7 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu ml-4" :class="{ 'is-active': isActive }">
+  <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isActive }">
     <div class="navbar-start">
       <a class="navbar-item" @click="goHome()">
           Home

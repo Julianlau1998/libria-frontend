@@ -8,19 +8,25 @@
 }
 .is-log-in-buttons {
     position: fixed;
-    top: 0.6rem;
+    top: 0.55rem;
     right: 2rem;
 }
 .navbar-burger {
     position: relative;
-    top: 0.1rem;
+    top: 0.02rem;
     right: 0.2rem;
+}
+.navbar {
+    height: 3.5rem;
 }
 @media (max-width: 1300px) {
     .is-log-in-buttons {
         position: relative;
         top: 0rem;
         right: 0rem;
+    }
+    .navbar.is-fixed-top .navbar-menu, .navbar.is-fixed-top-touch .navbar-menu {
+        margin-top: -0.3rem;
     }
 }
 
@@ -34,4 +40,10 @@
 }
 .navbar-burger:hover {
     background-color: white;
+}
+
+@media (min-width: 1300px) {
+    .navbar-start {
+        margin-left: 1rem;
+    }
 }

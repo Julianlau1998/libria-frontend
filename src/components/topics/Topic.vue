@@ -110,7 +110,7 @@ export default {
         ...mapState(['answerModule']),
         ...mapState(['topicModule']),
         answers () {
-            let answers = (!this.answerModule.answers.loading && this.answerModule.answers.data) || []
+            let answers = (!this.answerModule.answers.loading && this.answerModule.answers.data) || [{"body":"Loading...","username":"Loading", "votes": []},{"body":"Loading...","username":"Loading","votes": []},{"body":"Loading...","username":"Loading", "votes": []}]
             answers = answers.sort(function(a,b) {
                 return new Date(a.created_date) - new Date(b.created_date);
             });
@@ -140,7 +140,7 @@ export default {
             return bestAnswer
         },
         topic () {
-            return (!this.topicModule.topic.loading && this.topicModule.topic.data) || {}
+            return (!this.topicModule.topic.loading && this.topicModule.topic.data) || {"title":"Loading...","body":"Loading...","username":"Loading"}
         }
     },
     methods: {

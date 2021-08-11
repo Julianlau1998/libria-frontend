@@ -16,7 +16,7 @@ module.exports = {
       disableHostCheck: true,
       proxy: {
         '^/api/*': {
-          target: 'https://libria-service-new-q2ldqcxzza-ez.a.run.app',
+          target: 'http://localhost:1325',
           changeOrigin: true
         }
       }
