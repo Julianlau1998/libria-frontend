@@ -41,6 +41,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
+  margin-bottom: 7.5rem;
 }
 body {
   background-color: $mainBackground;

@@ -50,7 +50,7 @@ export default {
     topics () {
       let topics = (!this.topicModule.topics.loading && this.topicModule.topics.data) || [{"title":"Loading...","body":"Loading...","username":"Loading"},{"title":"Loading...","body":"Loading...","username":"Loading"},{"title":"Loading...","body":"Loading...","username":"Loading"}]
       topics = topics.sort(function(a,b) {
-        return new Date(a.created_date) - new Date(b.created_date);
+        return new Date(b.created_date) - new Date(a.created_date);
       });
       return chunk(topics, 3)
     }

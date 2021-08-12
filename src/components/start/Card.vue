@@ -2,6 +2,7 @@
     <span>
         <div
             class="card is-one-third is-smaller-card-width"
+            @click="$emit('openTopic', card.id)"
         >
             <div class="card-content" :id="`card-content-${type}`" ref="cardTitle">
                 <p class="is-username">
@@ -27,7 +28,7 @@
                 <span class="is-vote-icons" v-else>
                     <br><br>
                 </span>
-                <span @click="$emit('openTopic', card.id)">
+                <span>
                     <h2 class="is-size-4 is-card-title" v-if="card.title">
                         <b>
                             {{card.title}}
@@ -42,7 +43,11 @@
                         {{card.body}}
                     </h2>
                 </span>
-                <i class="fas fa-comment-alt is-comment-icon"></i>
+                <i v-if="type==='topic'" class="fas fa-comment-alt is-comment-icon">
+                    <span class="is-comment-text">
+                        {{card.amount_of_answers}}
+                    </span>
+                </i>
             </div>
         </div>
         <div class="dropdown is-active">

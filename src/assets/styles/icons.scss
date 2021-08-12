@@ -32,6 +32,10 @@
     top: -2rem;
     font-size: 1.5rem;
 }
+.is-comment-text {
+    font-family: avenir;
+    font-weight: 500;
+}
 @media (max-width: $tablet) {
     .is-crown {
         left: -0.8rem;

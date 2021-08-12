@@ -112,7 +112,7 @@ export default {
         answers () {
             let answers = (!this.answerModule.answers.loading && this.answerModule.answers.data) || [{"body":"Loading...","username":"Loading", "votes": []},{"body":"Loading...","username":"Loading","votes": []},{"body":"Loading...","username":"Loading", "votes": []}]
             answers = answers.sort(function(a,b) {
-                return new Date(a.created_date) - new Date(b.created_date);
+                return  new Date(b.created_date) - new Date(a.created_date);
             });
             return chunk(answers, 3)
         },
