@@ -102,7 +102,8 @@ export default {
             dropdownActive: false,
             upvote: false,
             downvote: false,
-            user_id: ''
+            user_id: '',
+            deleteModal: false
         }
     },
     watch: {
@@ -131,14 +132,8 @@ export default {
     methods: {
         ...mapState(['answerModule']),
         deleteCard () {
-            if (this.type === 'topic') {
-                this.$store.dispatch('topicModule/deleteOne', this.card)
-                this.dropdownActive = false
-            } else if (this.type === 'answer') {
-                this.$store.dispatch('answerModule/deleteOne', this.card)
-                this.dropdownActive = false
-            }
-    
+            this.$emit('openDeleteModal', this.card)
+            this.dropdownActive = false
         }, 
         editCard () {
             this.$emit('openEditModal', this.card)

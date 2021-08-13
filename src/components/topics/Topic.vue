@@ -35,6 +35,7 @@
                     :card="answer[0]"
                     @openEditModal="openEditModal($event)"
                     :cardNumber="Math.floor(Math.random() * 4) + 1"
+                    @openDeleteModal="openDeleteModal($event)"
                 />
             </div>
             <div class="column" v-if="answer.length>1">
@@ -43,6 +44,7 @@
                     :card="answer[1]"
                     @openEditModal="openEditModal($event)"
                     :cardNumber="Math.floor(Math.random() * 4) + 1"
+                    @openDeleteModal="openDeleteModal($event)"
                 />
             </div>
             <div class="column" v-if="answer.length>2">
@@ -51,6 +53,7 @@
                     :card="answer[2]"
                     @openEditModal="openEditModal($event)"
                     :cardNumber="Math.floor(Math.random() * 4) + 1"
+                    @openDeleteModal="openDeleteModal($event)"
                 />
             </div>
 
@@ -60,6 +63,7 @@
                     :card="answer[0]"
                     @openEditModal="openEditModal($event)"
                     :cardNumber="Math.floor(Math.random() * 4) + 1"
+                    @openDeleteModal="openDeleteModal($event)"
                 />
             </div>
         </div>
@@ -69,6 +73,11 @@
             :edit="edit"
             :topicId="topicId"
             @closeModal="closeModal()"
+        />
+        <DeleteModal
+            @deleteCard="deleteCard()"
+            @closeDeleteModal="deleteModal=false"
+            v-if="deleteModal"
         />
         <AddButton
             @openNewModal="openNewModal()"
@@ -81,6 +90,7 @@ import card from '@/components/start/Card.vue'
 import RandomTopic from '@/components/start/RandomTopic.vue'
 import AnswerModal from '@/components/modals/AnswerModal.vue'
 import AddButton from '@/components/start/AddButton.vue'
+import DeleteModal from '@/components/modals/DeleteModal.vue'
 import { mapState } from 'vuex'
 
 const chunk = require('chunk')
@@ -89,13 +99,15 @@ export default {
         card,
         RandomTopic,
         AnswerModal,
-        AddButton
+        AddButton,
+        DeleteModal
     },
     data () {
         return {
             topicId: '',
             openAnswerModal: false,
-            answerToEdit: {}
+            answerToEdit: {},
+            deleteModal: false
         }
     },
     created () {
@@ -103,8 +115,10 @@ export default {
         if (this.$auth.user === undefined) {
             this.$auth.user = {}
         } 
-        this.$store.dispatch('answerModule/getAllByTopic', {topicId: this.topicId, userId: this.$auth.user.sub})
-        this.$store.dispatch('topicModule/getOne', this.topicId)
+        if (this.topicId !== undefined) {
+            this.$store.dispatch('answerModule/getAllByTopic', {topicId: this.topicId, userId: this.$auth.user.sub})
+            this.$store.dispatch('topicModule/getOne', this.topicId)
+        }
     },
     computed: {
         ...mapState(['answerModule']),
@@ -112,7 +126,24 @@ export default {
         answers () {
             let answers = (!this.answerModule.answers.loading && this.answerModule.answers.data) || [{"body":"Loading...","username":"Loading", "votes": []},{"body":"Loading...","username":"Loading","votes": []},{"body":"Loading...","username":"Loading", "votes": []}]
             answers = answers.sort(function(a,b) {
-                return  new Date(b.created_date) - new Date(a.created_date);
+                // ToDo imrove sorting
+                let aVotes = 0
+                a.votes.forEach(vote => {
+                    if (vote.upvote === 'true') {
+                        aVotes++
+                    } else if (vote.upvote === 'false') {
+                        aVotes--
+                    }
+                })
+                let bVotes = 0
+                b.votes.forEach(vote => {
+                    if (vote.upvote === 'true') {
+                        bVotes++
+                    } else if (vote.upvote === 'false') {
+                        bVotes--
+                    }
+                })
+                return  bVotes - aVotes
             });
             return chunk(answers, 3)
         },
@@ -134,6 +165,9 @@ export default {
                     if (votes > bestAnswer.votes) {
                         bestAnswer.body = answer.body
                         bestAnswer.votes = votes
+                        if (this.topic.id !== undefined) {
+                            this.$store.dispatch('topicModule/updateBestAnswer', this.topic)
+                        }
                     }
                 })
             });
@@ -156,6 +190,15 @@ export default {
             this.openAnswerModal=false
             this.edit = false
         },
+        openDeleteModal (card) {
+            this.cardToDelete = card
+            this.deleteModal = true
+        },
+        deleteCard () {
+            this.$store.dispatch('answerModule/deleteOne', this.cardToDelete)
+            this.dropdownActive = false
+            this.deleteModal = false
+        }
     }
 }
 </script>

@@ -33,7 +33,7 @@ export function POST_TOPIC (state) {
   state.err = null
 }
 export function TOPIC_POSTED (state, topic) {
-  state.topics.data.push(topic)
+  state.topics.data.unshift(topic)
   state.topic.submitting = false
 }
 export function DELETE_TOPIC (state, topicId) {

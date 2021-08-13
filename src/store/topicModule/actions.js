@@ -86,11 +86,22 @@ export function put ({ commit }, topic) {
       console.log(error)
     })
 }
+export function updateBestAnswer ({ commit }, topic) {
+  commit('PUT_TOPIC')
+  axios
+    .put(`https://api.libria-app.com/api/topic/${topic.id}`, getUserId())
+    .then(function () {
+      commit('TOPIC_PUT')
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}
 
 
 
 
-//Dev
+// //Dev
 
 // import axios from 'axios'
 
@@ -173,6 +184,17 @@ export function put ({ commit }, topic) {
 //   commit('PUT_TOPIC')
 //   axios
 //     .put(`/api/topic/${topic.id}`, topic, getUserId())
+//     .then(function () {
+//       commit('TOPIC_PUT')
+//     })
+//     .catch(function (error) {
+//       console.log(error)
+//     })
+// }
+// export function updateBestAnswer ({ commit }, topic) {
+//   commit('PUT_TOPIC')
+//   axios
+//     .put(`/api/topicBestAnswer/${topic.id}`, getUserId())
 //     .then(function () {
 //       commit('TOPIC_PUT')
 //     })

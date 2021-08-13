@@ -23,7 +23,7 @@ export function POST_ANSWER (state) {
 }
 export function ANSWER_POSTED (state, answer) {
   console.log(answer)
-  state.answers.data.push(answer)
+  state.answers.data.unshift(answer)
   state.answer.submitting = false
 }
 export function DELETE_ANSWER (state, answerId) {
