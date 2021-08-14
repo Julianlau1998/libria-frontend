@@ -17,7 +17,6 @@
       @closeModal="closeModal()"
       v-if="openTopicModal"
     />
-    <button @click="test()"> test </button>
   </div>
 </template>
 

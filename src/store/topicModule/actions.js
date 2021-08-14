@@ -169,10 +169,10 @@ export function updateBestAnswer ({ commit }, topic) {
 //       console.log(error)
 //     })
 // }
-// export function deleteOne ({ commit }, answer) {
-//   commit('DELETE_TOPIC', answer.id)
+// export function deleteOne ({ commit }, topic) {
+//   commit('DELETE_TOPIC', topic.id)
 //   axios
-//     .delete(`/api/topic/${answer.id}`, answer, getUserId())
+//     .delete(`/api/topic/${topic.id}`, topic, getUserId())
 //     .then(function () {
 //       commit('TOPIC_DELETED')
 //     })
