@@ -165,9 +165,9 @@ export default {
                     if (votes > bestAnswer.votes) {
                         bestAnswer.body = answer.body
                         bestAnswer.votes = votes
-                        // if (this.topic.id !== undefined) {
-                        //     this.$store.dispatch('topicModule/updateBestAnswer', this.topic)
-                        // }
+                        if (this.topic.id !== undefined) {
+                            this.$store.dispatch('topicModule/updateBestAnswer', this.topic)
+                        }
                     }
                 })
             });

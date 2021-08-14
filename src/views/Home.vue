@@ -17,6 +17,7 @@
       @closeModal="closeModal()"
       v-if="openTopicModal"
     />
+    <button @click="test()"> test </button>
   </div>
 </template>
 
@@ -42,7 +43,8 @@ export default {
       openTopicModal: false,
       edit: false,
       topicToEdit: {},
-      foundTopics: []
+      foundTopics: [],
+      auth: {}
     }
   },
   computed: {
@@ -70,7 +72,7 @@ export default {
     },
     topicsFound (foundTopics) {
       this.foundTopics = foundTopics
-    }
+    },
   }
 }
 </script>

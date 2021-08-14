@@ -89,7 +89,7 @@ export function put ({ commit }, topic) {
 export function updateBestAnswer ({ commit }, topic) {
   commit('PUT_TOPIC')
   axios
-    .put(`https://api.libria-app.com/api/topic/${topic.id}`, getUserId())
+    .put(`https://api.libria-app.com/api/topicBestAnswer/${topic.id}`, getUserId())
     .then(function () {
       commit('TOPIC_PUT')
     })
