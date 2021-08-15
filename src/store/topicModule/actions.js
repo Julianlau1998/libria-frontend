@@ -171,8 +171,9 @@ export function updateBestAnswer ({ commit }, topic) {
 // }
 // export function deleteOne ({ commit }, topic) {
 //   commit('DELETE_TOPIC', topic.id)
+//   console.log(getUserId())
 //   axios
-//     .delete(`/api/topic/${topic.id}`, topic, getUserId())
+//     .delete(`/api/topic/${topic.id}`, getUserId())
 //     .then(function () {
 //       commit('TOPIC_DELETED')
 //     })
@@ -194,7 +195,7 @@ export function updateBestAnswer ({ commit }, topic) {
 // export function updateBestAnswer ({ commit }, topic) {
 //   commit('PUT_TOPIC')
 //   axios
-//     .put(`/api/topicBestAnswer/${topic.id}`, getUserId())
+//     .put(`/api/topicBestAnswer/${topic.id}`, topic, getUserId())
 //     .then(function () {
 //       commit('TOPIC_PUT')
 //     })

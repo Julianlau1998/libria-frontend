@@ -12,7 +12,7 @@
             <card 
                 :card="topic[0]"
                 :type="'topic'"
-                :cardNumber="Math.floor(Math.random() * 4) + 1"
+                :cardNumber="Math.floor(Math.random() * (4 - 3 + 1) + 3)"
                 @openTopic="openTopic($event)"
                 @openEditModal="openEditModal($event)"
                 @openDeleteModal="openDeleteModal($event)"

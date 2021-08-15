@@ -64,16 +64,16 @@ html {
     opacity: 0.8;
 }
 #card-body-1 {
-    color: $success;
+    color: $warning;
 }
 #card-body-2 {
-    color: $warning;
+    color: $white;
 }
 #card-body-3 {
     color: $info;
 }
 #card-body-4 {
-    color: $danger;
+    color: $success;
 }
 
 @media (max-width: $tablet) {
@@ -87,6 +87,8 @@ html {
         border: 1px solid white;
         padding-bottom: 0.5rem;
         padding-top: 1.5rem;
+        background-color: $black;
+        box-shadow: 1px 1px 1px $white;
     }
     .card-content {
         margin-top: 0;
