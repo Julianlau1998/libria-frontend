@@ -71,7 +71,7 @@
             v-if="openAnswerModal"
             :answerToEdit="answerToEdit"
             :edit="edit"
-            :topicId="topicId"
+            :topic="topic"
             @closeModal="closeModal()"
         />
         <DeleteModal

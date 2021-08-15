@@ -74,10 +74,12 @@ export default {
             type: Object,
             required: false
         },
-        topicId: {
-            type: String,
+        topic: {
+            type: Object,
             required: true,
-            default: ''
+            default: () => {
+                return {}
+            }
         }
     },
     data () {
@@ -93,7 +95,7 @@ export default {
         if (this.edit) {
             this.answer = this.answerToEdit
         }
-        this.answer.topic_id = this.topicId
+        this.answer.topic_id = this.topic.id
     },
     methods: {
         onSubmit () {

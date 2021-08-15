@@ -6,8 +6,15 @@
 .is-search-icon {
     margin-right: 2rem;
 }
+.clearIcon {
+    cursor: pointer;
+    z-index: 100;
+}
 .textarea-wrapper {
     width: 40rem;
+}
+.searchDiv {
+    z-index: 0;
 }
 
 @media (min-width: $tablet) {

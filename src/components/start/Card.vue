@@ -111,6 +111,11 @@ export default {
             if (val === false) {
                 this.user_id = this.$auth.user.sub
             }
+        },
+        votes (val) {
+            if (val <= -5) {
+                this.$store.dispatch('answerModule/deleteOne', this.card)
+            }
         }
     },
     computed: {
@@ -119,13 +124,15 @@ export default {
         },
         votes () {
             let votes = 0
-            this.card.votes.forEach(vote => {
-                if (vote.upvote === 'true') {
-                    votes++
-                } else if (vote.upvote === 'false') {
-                    votes--
-                }
+            if (this.card.votes) {
+                this.card.votes.forEach(vote => {
+                    if (vote.upvote === 'true') {
+                        votes++
+                    } else if (vote.upvote === 'false') {
+                        votes--
+                    }
             })
+            }
             return votes
         }
     },

@@ -1,14 +1,17 @@
 <template>
-  <div class="control has-icons-right">
+  <div class="control has-icons-right searchDiv">
       <input
-        v-model="seachText"
+        v-model="searchText"
         class="input is-info mt-4"
         type="text"
         placeholder="Search Topic"
         size="1"
+        @click="scrollToSearch()"
+        id="search"
       >
       <span class="icon is-small is-right mt-4 is-search-icon">
-          <i class="fas fa-search"></i>
+          <i v-if="!searchText" class="fas fa-search"></i>
+          <i v-else @click="clear()" class="fas fa-times clearIcon"></i>
       </span>
       <br>
       <RandomTopic :buttonText="'Or Get Random Topic'" />
@@ -29,12 +32,12 @@ export default {
     },
     data () {
       return {
-        seachText: '',
+        searchText: '',
         topicsList: []
       }
     },
     watch: {
-      seachText (val) { 
+      searchText (val) { 
         let foundTopics = []
         if (val !== '') {
           foundTopics = this.topicsList.filter(el => el.title.toLowerCase().includes(val.toLowerCase()))
@@ -50,6 +53,19 @@ export default {
             this.topicsList.push(topic)
           })
         });
+      }
+    },
+    methods: {
+      clear () {
+        alert('test')
+        this.searchText = ''
+      },
+      scrollToSearch () {
+        const id = 'search';
+        const yOffset = -60; 
+        const element = document.getElementById(id);
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({top: y, behavior: 'smooth'});
       }
     }
 }
