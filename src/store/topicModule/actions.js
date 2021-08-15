@@ -64,10 +64,10 @@ export function post ({ commit }, topic) {
       console.log(error)
     })
 }
-export function deleteOne ({ commit }, answer) {
-  commit('DELETE_TOPIC', answer.id)
+export function deleteOne ({ commit }, topic) {
+  commit('DELETE_TOPIC', topic.id)
   axios
-    .delete(`https://api.libria-app.com/api/topic/${answer.id}`, answer, getUserId())
+    .delete(`https://api.libria-app.com/api/topic/${topic.id}`, getUserId())
     .then(function () {
       commit('TOPIC_DELETED')
     })
