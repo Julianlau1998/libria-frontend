@@ -22,8 +22,13 @@
         <RandomTopic
             @openRandomTopic="openRandomTopic($event)"
             :buttonText="'Get Random Topic'"
-            class="mb-6"
+            class="mb-5"
         />
+        <h1 class="is-heading is-size-4 mb-5">
+            <b>
+                Answers:
+            </b>
+        </h1>
         <div
             class="columns is-variable is-0-mobile is-1-tablet is-3-desktop"
             v-for="(answer, index) in answers"
@@ -36,6 +41,7 @@
                     @openEditModal="openEditModal($event)"
                     :cardNumber="Math.floor(Math.random() * 4) + 1"
                     @openDeleteModal="openDeleteModal($event)"
+                    @openAnswer="openAnswer($event)"
                 />
             </div>
             <div class="column" v-if="answer.length>1">
@@ -45,6 +51,7 @@
                     @openEditModal="openEditModal($event)"
                     :cardNumber="Math.floor(Math.random() * 4) + 1"
                     @openDeleteModal="openDeleteModal($event)"
+                    @openAnswer="openAnswer($event)"
                 />
             </div>
             <div class="column" v-if="answer.length>2">
@@ -54,6 +61,7 @@
                     @openEditModal="openEditModal($event)"
                     :cardNumber="Math.floor(Math.random() * 4) + 1"
                     @openDeleteModal="openDeleteModal($event)"
+                    @openAnswer="openAnswer($event)"
                 />
             </div>
 
@@ -64,6 +72,7 @@
                     @openEditModal="openEditModal($event)"
                     :cardNumber="Math.floor(Math.random() * 4) + 1"
                     @openDeleteModal="openDeleteModal($event)"
+                    @openAnswer="openAnswer($event)"
                 />
             </div>
         </div>
@@ -178,6 +187,14 @@ export default {
         }
     },
     methods: {
+        openAnswer (answerUUID) {
+            this.$router.push(
+                {
+                    name: 'Answer', 
+                    params: {uuid: answerUUID}
+                }
+            )
+        },
         openNewModal () {
             this.openAnswerModal = true
         },

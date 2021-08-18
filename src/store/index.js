@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import topicModule from './topicModule'
 import answerModule from './answerModule'
 import votesModule from './votesModule'
+import commentModule from './commentModule'
 
 Vue.use(Vuex)
 
@@ -17,6 +18,7 @@ export default new Vuex.Store({
   modules: {
     topicModule,
     answerModule,
-    votesModule
+    votesModule,
+    commentModule
   }
 })

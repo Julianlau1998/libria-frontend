@@ -40,4 +40,25 @@
 .plusButton:active {
   box-shadow: -1px -1px 4px 0px black,
               1px 1px 3px 0px rgb(133, 133, 133);
-  }
+}
+.commentButton {
+    position: fixed;
+    bottom: 0.5rem;
+    right: 3.5rem;
+    height: 2.5rem;
+    width: 8vw;
+    max-width: 10rem;
+}
+
+@media (max-width: $tablet) {
+    .commentButton {
+        width: 14vw;
+        right: 0.7rem;
+    }
+}
+
+@media (min-width: $tablet) {
+    .commentButton {
+        right: 0.2rem;
+    }
+}

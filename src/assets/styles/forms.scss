@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-.input {
+.searchInput, .modalInput  {
     width: 90%;
 }
 .is-search-icon {
@@ -16,13 +16,24 @@
 .searchDiv {
     z-index: 0;
 }
+.commentInput {
+    position: fixed;
+    bottom: 0.5rem;
+    left: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    width: 75vw;
+}
 
 @media (min-width: $tablet) {
-    .input {
+    .searchInput, .modalInput {
         width: 50%;
     }
     .is-search-icon {
         margin-right: 26%;
+    }
+    .commentInput {
+        width: 89vw;
     }
 }
 @media (max-width: $tablet) {

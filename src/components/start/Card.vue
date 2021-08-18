@@ -2,13 +2,13 @@
     <span>
         <div
             class="card is-one-third is-smaller-card-width"
-            @click="$emit('openTopic', card.id)"
+            @click="openTopic()"
         >
             <div class="card-content" :id="`card-content-${type}`" ref="cardTitle">
                 <p class="is-username">
                     @{{card.username}}
                 </p>
-                <span class="is-vote-icons" v-if="this.type === 'answer'">
+                <span class="is-vote-icons" v-if="type === 'answer'">
                     <i 
                         class="fas fa-chevron-up"
                         :class="(card.upvoted_by_me) ? 'upvote' : 'no-upvote'"
@@ -68,7 +68,7 @@
                     <a @click="deleteCard()" class="dropdown-item">
                         Delete
                     </a>
-                    <a @click="editCard()" class="dropdown-item">
+                    <a @click="editCard()" v-if="type!=='comment'" class="dropdown-item">
                         Edit
                     </a>
                 </div>
@@ -138,6 +138,13 @@ export default {
     },
     methods: {
         ...mapState(['answerModule']),
+        openTopic () {
+            if (this.type === 'topic') {
+                this.$emit('openTopic', this.card.id)
+            } else if (this.type === 'answer') {
+                this.$emit('openAnswer', this.card.id)
+            }
+        },
         deleteCard () {
             this.$emit('openDeleteModal', this.card)
             this.dropdownActive = false

@@ -2,7 +2,7 @@
   <div class="control has-icons-right searchDiv">
       <input
         v-model="searchText"
-        class="input is-info mt-4"
+        class="input searchInput is-info mt-4"
         type="text"
         placeholder="Search Topic"
         size="1"
@@ -11,7 +11,7 @@
       >
       <span class="icon is-small is-right mt-4 is-search-icon">
           <i v-if="!searchText" class="fas fa-search"></i>
-          <i v-else @click="clear()" class="fas fa-times clearIcon"></i>
+          <i v-else @click="clear()" class="fas fa-times is-clear-icon"></i>
       </span>
       <br>
       <RandomTopic :buttonText="'Or Get Random Topic'" />
@@ -57,7 +57,6 @@ export default {
     },
     methods: {
       clear () {
-        alert('test')
         this.searchText = ''
       },
       scrollToSearch () {

@@ -1,4 +1,6 @@
 import axios from 'axios'
+const host = 'https://api.libria-app.com'
+// const host = ''
 
 const getUserId = () => {
   const userId = window.localStorage.getItem('userId')
@@ -12,7 +14,7 @@ const getUserId = () => {
 export function getAllByAnswer ({ commit }, answerId) {
   commit('GET_VOTES')
   axios
-    .get(`https://api.libria-app.com/api/votes/${answerId}`)
+    .get(`${host}/api/votes/${answerId}`)
     .then(response => {
       commit('RECEIVE_VOTES', response.data)
     })
@@ -23,7 +25,7 @@ export function getAllByAnswer ({ commit }, answerId) {
 export function post ({ commit }, vote) {
   commit('POST_VOTE', vote)
   axios
-    .post('https://api.libria-app.com/api/vote', vote, getUserId())
+    .post(`${host}/api/vote`, vote, getUserId())
     .then(respnse => {
       vote.id = respnse.data
       commit('VOTE_POSTED', vote)
@@ -35,7 +37,7 @@ export function post ({ commit }, vote) {
 export function put ({ commit }, vote) {
   commit('PUT_VOTE')
   axios
-    .put(`https://api.libria-app.com/api/vote/${vote.id}`, vote, getUserId())
+    .put(`${host}/api/vote/${vote.id}`, vote, getUserId())
     .then(function () {
       commit('VOTE_PUT')
     })

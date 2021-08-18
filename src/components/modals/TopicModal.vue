@@ -8,7 +8,7 @@
                 <validationProvider rules="required|max:255" v-slot="{errors}">
                     <input
                         rules="required"
-                        class="input is-primary mt-2"
+                        class="input modalInput is-primary mt-2"
                         type="text"
                         placeholder="New Topic"
                         v-model="topic.title"

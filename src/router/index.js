@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Topic from '../views/Topic.vue'
+import Answer from '../views/Answer.vue'
 import Profile from '../views/Profile.vue'
 
 import { authGuard } from "../auth/authGuard";
@@ -18,6 +19,12 @@ const routes = [
     path: '/topic/:uuid',
     name: 'Topic',
     component: Topic,
+    // beforeEnter: authGuard
+  },
+  {
+    path: '/answer/:uuid',
+    name: 'Answer',
+    component: Answer,
     // beforeEnter: authGuard
   },
   {

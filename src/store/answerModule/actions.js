@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+const host = 'https://api.libria-app.com'
+// const host = ''
+
 // const getAuth = () => {
 //   const token = window.localStorage.getItem('token')
 //   return {
@@ -21,7 +24,7 @@ const getUserId = () => {
 export async function getAll ({ commit }) {
   commit('GET_ANSWERS')
   axios
-    .get('https://api.libria-app.com/api/answers')
+    .get(`${host}/api/answers`)
     .then(response => {
       commit('RECEIVE_ANSWERS', response.data)
     })
@@ -32,7 +35,7 @@ export async function getAll ({ commit }) {
 export function getAllByTopic ({ commit }, payload) {
   commit('GET_ANSWERS')
   axios
-    .get(`https://api.libria-app.com/api/answers/${payload.topicId}`, {headers: {userId: payload.userId}})
+    .get(`${host}/api/answers/${payload.topicId}`, {headers: {userId: payload.userId}})
     .then(response => {
       commit('RECEIVE_ANSWERS', response.data)
     })
@@ -43,9 +46,9 @@ export function getAllByTopic ({ commit }, payload) {
 export function getOne ({ commit }, id) {
   commit('GET_ANSWER')
   axios
-    .get(`https://api.libria-app.com/api/answers/${id}`)
+    .get(`${host}/api/answer/${id}`)
     .then(response => {
-      commit('ANSWER_ANSWER', response.data)
+      commit('RECEIVE_ANSWER', response.data)
     })
     .catch(err => {
       console.log(err)
@@ -54,7 +57,7 @@ export function getOne ({ commit }, id) {
 export function post ({ commit }, answer) {
   commit('POST_ANSWER', answer)
   axios
-    .post('https://api.libria-app.com/api/answer', answer, getUserId())
+    .post(`${host}/api/answer`, answer, getUserId())
     .then(respnse => {
       answer.id = respnse.data
       commit('ANSWER_POSTED', answer)
@@ -66,7 +69,7 @@ export function post ({ commit }, answer) {
 export function deleteOne ({ commit }, answer) {
   commit('DELETE_ANSWER', answer.id)
   axios
-    .delete(`https://api.libria-app.com/api/answer/${answer.id}`, answer, getUserId())
+    .delete(`${host}/api/answer/${answer.id}`, answer, getUserId())
     .then(function () {
       commit('ANSWER_DELETED')
     })
@@ -77,7 +80,7 @@ export function deleteOne ({ commit }, answer) {
 export function put ({ commit }, answer) {
   commit('PUT_ANSWER')
   axios
-    .put(`https://api.libria-app.com/api/answer/${answer.id}`, answer, getUserId())
+    .put(`${host}/api/answer/${answer.id}`, answer, getUserId())
     .then(function () {
       commit('ANSWER_PUT')
     })
@@ -134,9 +137,9 @@ export function put ({ commit }, answer) {
 // export function getOne ({ commit }, id) {
 //   commit('GET_ANSWER')
 //   axios
-//     .get(`/api/answers/${id}`)
+//     .get(`/api/answer/${id}`)
 //     .then(response => {
-//       commit('ANSWER_ANSWER', response.data)
+//       commit('RECEIVE_ANSWER', response.data)
 //     })
 //     .catch(err => {
 //       console.log(err)

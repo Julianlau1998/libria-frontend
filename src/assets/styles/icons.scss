@@ -36,6 +36,10 @@
     font-family: avenir;
     font-weight: 500;
 }
+.is-clear-icon {
+    font-size: 1.4rem;
+    pointer-events: initial !important;
+}
 @media (max-width: $tablet) {
     .is-crown {
         left: -0.8rem;

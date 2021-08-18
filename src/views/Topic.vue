@@ -1,6 +1,7 @@
 <template>
   <div class="container mb-8">
         <Topic v-if="!$auth.loading || $auth === undefined" />
+        <!-- <Topic /> -->
   </div>
 </template>
 
