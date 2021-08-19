@@ -18,7 +18,7 @@
             </h2>
         </div>
     </div>
-    <h1 class="is-heading is-size-4 mb-2">
+    <h1 class="is-heading is-size-4 mb-5">
         <b>
             Comments:
         </b>
