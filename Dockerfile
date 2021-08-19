@@ -1,5 +1,5 @@
 FROM node:lts-alpine as build-stage
-WORKDIR /builddir
+WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
@@ -7,7 +7,7 @@ RUN npm run build
 
 FROM nginx as production-stage
 RUN mkdir /app
-COPY --from=build-stage /builddir/dist /app
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY --from=build-stage /app/dist /app
+COPY --from=build-stage ./nginx.conf /etc/nginx/nginx.conf
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
