@@ -12,7 +12,7 @@
                     <i 
                         class="fas fa-chevron-up"
                         :class="(card.upvoted_by_me) ? 'upvote' : 'no-upvote'"
-                        @click="upvoteAnswer()"
+                        @click.stop="upvoteAnswer()"
                         ref="upvote"
                     ></i>
                     <br>
@@ -21,7 +21,7 @@
                     <i
                         class="fas fa-chevron-down"
                         :class="(card.downvoted_by_me) ? 'downvote' : 'no-downvote'"
-                        @click="downvoteAnswer()"
+                        @click.stop="downvoteAnswer()"
                         ref="downvote"
                     ></i>
                 </span>
@@ -53,9 +53,9 @@
         <div class="dropdown is-active">
             <div class="dropdown-trigger" v-if="!$auth.loading && $auth.isAuthenticated">
                 <i 
-                    v-if="card.user_id === $auth.user.sub"
+                    v-if="card.username === $auth.user.nickname"
                     class="fas fa-ellipsis-h is-option-icon"
-                    @click="dropdownActive=!dropdownActive"
+                    @click.stop="dropdownActive=!dropdownActive"
                 ></i>
             </div>
             <div
