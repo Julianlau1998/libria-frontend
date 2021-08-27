@@ -3,7 +3,7 @@
     <h2 class="is-size-2 mt-6">
         Welcome
     </h2>
-    <h3 class="is-size-6">
+    <h3 class="is-sub-header">
       Find quick and understandable information on any topic you'd like.
     </h3>
     <Search @topicsFound="topicsFound($event)" :topics="topics" />

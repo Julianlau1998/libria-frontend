@@ -11,6 +11,7 @@ require('@/assets/styles/forms.scss')
 require('@/assets/styles/buttons.scss')
 require('@/assets/styles/modals.scss')
 require('@/assets/styles/animations.scss')
+require('@/assets/styles/typography.scss')
 
 // Auth0 configuration
 import { domain, clientId } from "../auth_config.json";
