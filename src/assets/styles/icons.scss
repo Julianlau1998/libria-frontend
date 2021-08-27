@@ -7,8 +7,8 @@
 .is-vote-icons {
     position: relative;
     left: 62%;
-    top: 0.5rem;
-    font-size: 1.2rem;
+    top: 0rem;
+    font-size: 1.1rem;
     pointer-events: initial;
 }
 
@@ -47,10 +47,11 @@
         top: 0.5rem;
     }
     .is-option-icon {
-        top: -0.3rem;
+        top: -0rem;
     }
     .is-vote-icons {
-        left: 59%;
+        left: 61.5%;
         top: 1rem;
+        font-size: 1.27rem;
     }
 }

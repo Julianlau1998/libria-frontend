@@ -18,11 +18,23 @@
 }
 .commentInput {
     position: fixed;
-    bottom: 0.5rem;
-    left: 1rem;
+    bottom: 0.1rem;
+    left: 1.5rem;
     display: flex;
     justify-content: flex-start;
-    width: 75vw;
+    width: 72vw;
+    background-color: $black;
+    color: $white;
+    border: none;
+    box-shadow: 0px 0px 3px white;
+    border-radius: 10px;
+    resize: none;
+}
+.commentInput:focus {
+    border: 1px solid white;
+}
+.commentInput::-webkit-input-placeholder {
+    color: $white;
 }
 
 @media (min-width: $tablet) {

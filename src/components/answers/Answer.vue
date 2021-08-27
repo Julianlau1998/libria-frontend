@@ -74,7 +74,7 @@
             @click="submitComment()" 
             class="button is-warning commentButton mr-2"
         >
-            Post
+            <i class="fas fa-share" name="send"/>
         </button>
     </div>
     <DeleteModal

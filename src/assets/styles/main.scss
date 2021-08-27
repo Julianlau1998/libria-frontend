@@ -79,16 +79,22 @@ html {
 @media (max-width: $tablet) {
     .card {
         border-radius: 8px;
-        margin-bottom: -2.5rem;
+        margin-bottom: 0rem;
         width: 98vw;
-        margin-left: 1%;
+        margin-left: 0.5%;
         box-shadow: none;
         margin-bottom: -2rem;
-        border: 1px solid white;
+        border: 0px solid white;
         padding-bottom: 0.5rem;
         padding-top: 1.5rem;
         background-color: $black;
-        box-shadow: 1px 1px 1px $white;
+        box-shadow: 0px 0px 6px rgb(220, 220, 220);
+        &.is-wide-card  {
+            width: 98vw;
+        }
+    }
+    .card:hover {
+        box-shadow: 0px 0px 6px rgb(208, 208, 208);
     }
     .card-content {
         margin-top: 0;
