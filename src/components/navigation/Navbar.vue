@@ -34,6 +34,12 @@
           Profile
         </span>
       </a>
+
+      <a class="navbar-item" @click="openModPage()" v-if="!$auth.loading">
+        <span v-if="$auth.isAuthenticated && $auth.user.name[0] === 'admin'">
+          Moderation
+        </span>
+      </a>
       <br>
 <!-- 
       <a class="navbar-item">
@@ -104,6 +110,10 @@ export default {
       openProfile () {
         this.isActive = false
         this.$router.push('/profile')
+      },
+      openModPage () {
+        this.isActive = false
+        this.$router.push('/admin')
       }
     },
     created () {

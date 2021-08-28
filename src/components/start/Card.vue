@@ -4,10 +4,16 @@
             class="card is-one-third is-smaller-card-width"
             @click="openTopic()"
         >
-            <div class="card-content" :id="`card-content-${type}`" ref="cardTitle">
+            <div
+                class="card-content" 
+                :class="adminPage ? 'mt-5' : ''"
+                :id="`card-content-${type}`"
+                ref="cardTitle"
+            >
                 <p class="is-username">
                     @{{card.username}}
                 </p>
+                <i class="fas fa-flag is-flag-icon" v-if="card.reported"/>
                 <span class="is-vote-icons" v-if="type === 'answer'">
                     <i 
                         class="fas fa-chevron-up"
@@ -39,7 +45,7 @@
                             &nbsp;
                         </b>
                     </h2>
-                    <h2 class="is-size-5 card-body" :id="`card-body-${cardNumber}`">
+                    <h2 class="is-size-5 card-body mb-3" :id="`card-body-${cardNumber}`">
                         {{card.body}}
                     </h2>
                 </span>
@@ -53,7 +59,6 @@
         <div class="dropdown is-active">
             <div class="dropdown-trigger" v-if="!$auth.loading && $auth.isAuthenticated">
                 <i 
-                    v-if="card.username === $auth.user.nickname"
                     class="fas fa-ellipsis-h is-option-icon"
                     @click.stop="dropdownActive=!dropdownActive"
                 ></i>
@@ -64,12 +69,38 @@
                 id="dropdown-menu"
                 role="menu"
             >
-                <div class="dropdown-content">
-                    <a @click="deleteCard()" class="dropdown-item">
+                <div class="dropdown-content pl-5">
+                    <a
+                        @click="deleteCard()"
+                        class="dropdown-item"
+                        v-if="card.username === $auth.user.nickname"
+                    >
+                        <i class="fas fa-trash dropdownIcon" />
                         Delete
                     </a>
-                    <a @click="editCard()" v-if="type!=='comment'" class="dropdown-item">
+                    <a
+                        @click="editCard()"
+                        v-if="type!=='comment' && card.username === $auth.user.nickname"
+                        class="dropdown-item"
+                    >
+                        <i class="fas fa-edit dropdownIcon" />
                         Edit
+                    </a>
+                    <a
+                        @click="report(card)"
+                        class="dropdown-item"
+                        v-if="!adminPage"
+                    >
+                        <i class="fas fa-flag dropdownIcon" />
+                        Report
+                    </a>
+                    <a
+                        @click="unreport(card)"
+                        class="dropdown-item"
+                        v-else
+                    >
+                        <i class="fas fa-flag dropdownIcon" />
+                        Unreport
                     </a>
                 </div>
             </div>
@@ -95,6 +126,11 @@ export default {
         cardNumber: {
             type: Number,
             required: false
+        },
+        adminPage: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     data () {
@@ -138,6 +174,7 @@ export default {
     },
     methods: {
         ...mapState(['answerModule']),
+        ...mapState(['reportModule']),
         openTopic () {
             if (this.type === 'topic') {
                 this.$emit('openTopic', this.card.id)
@@ -184,6 +221,14 @@ export default {
             } else {
                 this.$store.state.login_modal = true
             }
+        },
+        report (card) {
+            this.dropdownActive = false
+            this.$store.dispatch('reportModule/report', {id: card.id, contentType: `${this.type}s`})
+        },
+        unreport (card) {
+            this.dropdownActive = false
+            this.$store.dispatch('reportModule/unreport', {id: card.id, contentType: `${this.type}`})
         }
     }
 }

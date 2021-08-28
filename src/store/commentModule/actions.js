@@ -31,6 +31,19 @@ export async function getAll ({ commit }) {
       console.log(err)
     })
 }
+
+export async function getReported ({ commit }) {
+  commit('GET_COMMENTS')
+  axios
+    .get(`${host}/api/reported/comments?contentType=topic`)
+    .then(response => {
+      commit('RECEIVE_COMMENTS', response.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
 export function getAllByAnswer ({ commit }, payload) {
   commit('GET_COMMENTS')
   axios

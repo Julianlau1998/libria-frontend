@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Topic from '../views/Topic.vue'
 import Answer from '../views/Answer.vue'
 import Profile from '../views/Profile.vue'
+import Admin from '../views/Admin.vue'
 
 import { authGuard } from "../auth/authGuard";
 
@@ -31,6 +32,12 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile,
+    beforeEnter: authGuard
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
     beforeEnter: authGuard
   }
 ]

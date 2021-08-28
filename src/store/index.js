@@ -4,6 +4,7 @@ import topicModule from './topicModule'
 import answerModule from './answerModule'
 import votesModule from './votesModule'
 import commentModule from './commentModule'
+import reportModule from './reportModule'
 
 Vue.use(Vuex)
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     topicModule,
     answerModule,
     votesModule,
-    commentModule
+    commentModule,
+    reportModule
   }
 })

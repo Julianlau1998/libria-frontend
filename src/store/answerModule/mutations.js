@@ -22,7 +22,6 @@ export function POST_ANSWER (state) {
   state.err = null
 }
 export function ANSWER_POSTED (state, answer) {
-  console.log(answer)
   state.answers.data.unshift(answer)
   state.answer.submitting = false
 }
@@ -33,11 +32,4 @@ export function DELETE_ANSWER (state, answerId) {
 }
 export function ANSWER_DELETED (state) {
   state.answer.loading = false
-}
-export function PUT_ANSWER (state) {
-  state.answer.submitting = true
-  state.err = null
-}
-export function ANSWER_PUT (state) {
-  state.answer.submitting = false
 }

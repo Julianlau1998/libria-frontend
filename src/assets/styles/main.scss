@@ -146,6 +146,11 @@ a.dropdown-item {
 .is-error {
     color : $danger;
 }
+
+.dropdown-content {
+    text-align: left;
+}
+
 @media (max-width: $tablet) {
     .is-dropdown-item {
         top: 1rem;

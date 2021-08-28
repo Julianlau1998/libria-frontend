@@ -41,6 +41,15 @@
     font-size: 1.4rem;
     pointer-events: initial !important;
 }
+.is-flag-icon {
+    position: absolute;
+    right: 1rem;
+    top: 0.6rem;
+    color: $danger;
+}
+.dropdownIcon {
+    font-size: 1.2rem;
+}
 @media (max-width: $tablet) {
     .is-crown {
         left: -0.8rem;
