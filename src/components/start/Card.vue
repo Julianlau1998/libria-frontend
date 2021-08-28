@@ -73,7 +73,7 @@
                     <a
                         @click="deleteCard()"
                         class="dropdown-item"
-                        v-if="card.username === $auth.user.nickname"
+                        v-if="card.username === $auth.user.nickname || card.name[0]==='admin' && adminPage"
                     >
                         <i class="fas fa-trash dropdownIcon" />
                         Delete
