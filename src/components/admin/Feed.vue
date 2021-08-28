@@ -42,20 +42,33 @@
              />
         </div>
       </div>
+      <DeleteModal
+        @deleteCard="deleteCard()"
+        @closeDeleteModal="deleteModal=false"
+        v-if="deleteModal"
+    />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import card from '@/components/start/Card.vue'
+import DeleteModal from '@/components/modals/DeleteModal.vue'
+
 const chunk = require('chunk')
 
 export default {
-    components: {card},
+    components: {card, DeleteModal},
     props: {
         type: {
             type: String,
             required: true,
+        }
+    },
+    data () {
+        return {
+            cardToDelete: {},
+            deleteModal: false
         }
     },
     created () {
@@ -121,6 +134,12 @@ export default {
                 }
                 return []
         }
+    },
+    methods: {
+        openDeleteModal (card) {
+            this.cardToDelete = card
+            this.deleteModal = true
+        },
     }
 }
 </script>
