@@ -140,6 +140,17 @@ export default {
             this.cardToDelete = card
             this.deleteModal = true
         },
+        deleteCard () {
+            if (this.type === 'topics') {
+                this.$store.dispatch('topicModule/deleteOne', this.cardToDelete)
+            } else if (this.type === 'answers') {
+                this.$store.dispatch('answerModule/deleteOne', this.cardToDelete)
+            } else if (this.type === 'comments') {
+                this.$store.dispatch('commentModule/deleteOne', this.cardToDelete)
+            }
+            this.dropdownActive = false
+            this.deleteModal = false
+        }
     }
 }
 </script>
