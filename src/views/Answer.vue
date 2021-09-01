@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-8">
+  <div class="container">
         <Answer v-if="!$auth.loading || $auth === undefined" />
         <!-- <Answer /> -->
   </div>

@@ -4,7 +4,9 @@ export function GET_TOPICS (state) {
 }
 
 export function RECEIVE_TOPICS (state, topics) {
-  state.topics.data = topics
+  for (let i=0; i<topics.length; i++) {
+    state.topics.data.push(topics[i])
+  }
   state.topics.loading = false
 }
 

@@ -43,18 +43,37 @@ export default {
       edit: false,
       topicToEdit: {},
       foundTopics: [],
-      auth: {}
+      auth: {},
+      limit: 100,
+      offset: 0,
+      searchText: '',
+      total: 0
     }
   },
   computed: {
     ...mapState(['topicModule']),
     topics () {
-      let topics = (!this.topicModule.topics.loading && this.topicModule.topics.data) || [{"title":"Loading...","body":"Loading...","username":"Loading"},{"title":"Loading...","body":"Loading...","username":"Loading"},{"title":"Loading...","body":"Loading...","username":"Loading"}]
+      let topics
+      if (this.offset <= 100) {
+        topics = (!this.topicModule.topics.loading && this.topicModule.topics.data) || [{"title":"Loading...","body":"Loading...","username":"Loading"},{"title":"Loading...","body":"Loading...","username":"Loading"},{"title":"Loading...","body":"Loading...","username":"Loading"}]
+      } else {
+        topics = ( this.topicModule.topics.data) || []
+      }
       topics = topics.sort(function(a,b) {
         return new Date(b.created_date) - new Date(a.created_date);
       });
       return chunk(topics, 3)
     }
+  },
+  watch: {
+    topics (val) {
+      if (val[0][0].amount !== undefined) {
+        this.amount = val[0][0].amount
+      }
+    }
+  },
+  mounted () {
+    this.getNextTopics()
   },
   methods: {
     openNewModal () {
@@ -72,6 +91,18 @@ export default {
     topicsFound (foundTopics) {
       this.foundTopics = foundTopics
     },
+    getNextTopics() {
+      window.onscroll = () => {
+        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        if (bottomOfWindow) {
+          console.log(this.topics[0][0].amount)
+          if (this.amount > this.topicModule.topics.data.length && !this.topicModule.topics.loading) {
+            this.offset += 100
+            this.$store.dispatch('topicModule/getAll', {limit: this.limit, offset: this.offset, searchText: this.searchText})
+          }
+        }
+      }
+    }
   }
 }
 </script>

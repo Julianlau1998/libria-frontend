@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-8">
+  <div class="container">
         <Topic v-if="!$auth.loading || $auth === undefined" />
         <!-- <Topic /> -->
   </div>

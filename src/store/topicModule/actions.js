@@ -21,10 +21,10 @@ const getUserId = () => {
   }
 }
 
-export async function getAll ({ commit }) {
+export async function getAll ({ commit }, {limit = 10, offset = 0, searchText = ''}) {
   commit('GET_TOPICS')
   axios
-    .get(`${host}/api/topics`)
+    .get(`${host}/api/topics?limit=${limit}&offset=${offset}&searchText=${searchText}`)
     .then(response => {
       commit('RECEIVE_TOPICS', response.data)
     })

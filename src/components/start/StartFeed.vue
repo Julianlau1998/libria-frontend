@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-8">
+  <div>
     <h1 class="is-size-3 mt-5 mb-5">
           Feed
     </h1>
@@ -86,7 +86,7 @@ export default {
         }
     },
     created () {
-        this.$store.dispatch('topicModule/getAll')
+        this.$store.dispatch('topicModule/getAll', {limit: 100, offset: 0, searchText: ''})
 },
     watch: {
         foundTopics (val) {

@@ -145,7 +145,7 @@ export default {
     watch: {
         is_loading (val) {
             if (val === false) {
-                this.user_id = this.$auth.user.sub
+                if (this.$auth) this.user_id = this.$auth.user.sub
             }
         },
         votes (val) {
@@ -156,7 +156,8 @@ export default {
     },
     computed: {
         is_loading () {
-            return this.$auth.loading
+            if (this.$auth && this.$auth.user !== undefined) return this.$auth.loading
+            return true
         },
         votes () {
             let votes = 0
