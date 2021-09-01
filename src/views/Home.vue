@@ -44,7 +44,7 @@ export default {
       topicToEdit: {},
       foundTopics: [],
       auth: {},
-      limit: 100,
+      limit: 30,
       offset: 0,
       searchText: '',
       total: 0
@@ -54,7 +54,7 @@ export default {
     ...mapState(['topicModule']),
     topics () {
       let topics
-      if (this.offset <= 100) {
+      if (this.offset <= 30) {
         topics = (!this.topicModule.topics.loading && this.topicModule.topics.data) || [{"title":"Loading...","body":"Loading...","username":"Loading"},{"title":"Loading...","body":"Loading...","username":"Loading"},{"title":"Loading...","body":"Loading...","username":"Loading"}]
       } else {
         topics = ( this.topicModule.topics.data) || []
@@ -93,11 +93,12 @@ export default {
     },
     getNextTopics() {
       window.onscroll = () => {
-        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        console.log((Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight-100))
+        let bottomOfWindow = Math.Round(Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)) + window.innerHeight === document.documentElement.offsetHeight;
         if (bottomOfWindow) {
-          console.log(this.topics[0][0].amount)
+          alert('bottom')
           if (this.amount > this.topicModule.topics.data.length && !this.topicModule.topics.loading) {
-            this.offset += 100
+            this.offset += 30
             this.$store.dispatch('topicModule/getAll', {limit: this.limit, offset: this.offset, searchText: this.searchText})
           }
         }

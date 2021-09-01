@@ -86,7 +86,7 @@ export default {
         }
     },
     created () {
-        this.$store.dispatch('topicModule/getAll', {limit: 100, offset: 0, searchText: ''})
+        this.$store.dispatch('topicModule/getAll', {limit: 30, offset: 0, searchText: ''})
 },
     watch: {
         foundTopics (val) {
