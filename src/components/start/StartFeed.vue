@@ -54,7 +54,7 @@
         @closeDeleteModal="deleteModal=false"
         v-if="deleteModal"
     />
-    <br><br><br><br><br><br><br><br>
+    <br><br>
   </div>
 </template>
 
@@ -87,7 +87,7 @@ export default {
     },
     created () {
         this.$store.dispatch('topicModule/getAll', {limit: 30, offset: 0, searchText: '', creating: true})
-},
+    },
     watch: {
         foundTopics (val) {
             this.topics = chunk(val, 3)

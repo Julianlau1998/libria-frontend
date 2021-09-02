@@ -20,6 +20,7 @@
 
 <script>
 import RandomTopic from '@/components/start/RandomTopic.vue'
+import { mapState } from 'vuex'
 
 export default {
     name: 'search',
@@ -36,15 +37,28 @@ export default {
         topicsList: []
       }
     },
+    // computed: {
+    //   ...mapState['topicModule'],
+    //   foundTopics () {
+    //     let topics = (this.topicModule.topics.data) || []
+    //     topics = topics.sort(function(a,b) {
+    //       return new Date(b.created_date) - new Date(a.created_date);
+    //     });
+    //     return chunk(topics, 3)
+    //   }
+    // },
     watch: {
       searchText (val) { 
-        let foundTopics = []
-        if (val !== '') {
-          foundTopics = this.topicsList.filter(el => el.title.toLowerCase().includes(val.toLowerCase()))
-        } else {
-          foundTopics = this.topicsList
-        }
-        this.$emit('topicsFound', foundTopics)
+        // let foundTopics = []
+        // if (val !== '') {
+        //   foundTopics = this.topicsList.filter(el => el.title.toLowerCase().includes(val.toLowerCase()))
+        // } else {
+        //   foundTopics = this.topicsList
+        // }
+        this.$store.dispatch('topicModule/getAll', {limit: 0, offset: 0, searchText: val, creating: true})
+
+
+        this.$emit('topicsFound', this.foundTopics)
       },
       topics () {
         this.topicsList = []
@@ -56,6 +70,7 @@ export default {
       }
     },
     methods: {
+      ...mapState['topicModule'],
       clear () {
         this.searchText = ''
       },
