@@ -21,12 +21,12 @@ const getUserId = () => {
   }
 }
 
-export async function getAll ({ commit }, {limit = 10, offset = 0, searchText = ''}) {
+export async function getAll ({ commit }, {limit = 10, offset = 0, searchText = '', creating = false}) {
   commit('GET_TOPICS')
   axios
     .get(`${host}/api/topics?limit=${limit}&offset=${offset}&searchText=${searchText}`)
     .then(response => {
-      commit('RECEIVE_TOPICS', response.data)
+      commit('RECEIVE_TOPICS', response.data, creating)
     })
     .catch(err => {
       console.log(err)

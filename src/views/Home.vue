@@ -93,10 +93,7 @@ export default {
     },
     getNextTopics() {
       window.onscroll = () => {
-        console.log((Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight-100))
-        let bottomOfWindow = Math.Round(Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)) + window.innerHeight === document.documentElement.offsetHeight;
-        if (bottomOfWindow) {
-          alert('bottom')
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
           if (this.amount > this.topicModule.topics.data.length && !this.topicModule.topics.loading) {
             this.offset += 30
             this.$store.dispatch('topicModule/getAll', {limit: this.limit, offset: this.offset, searchText: this.searchText})

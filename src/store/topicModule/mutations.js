@@ -3,9 +3,13 @@ export function GET_TOPICS (state) {
   state.err = null
 }
 
-export function RECEIVE_TOPICS (state, topics) {
-  for (let i=0; i<topics.length; i++) {
-    state.topics.data.push(topics[i])
+export function RECEIVE_TOPICS (state, topics, creating) {
+  if (!creating) {
+    for (let i=0; i<topics.length; i++) {
+      state.topics.data.push(topics[i])
+    }
+  } else {
+    state.topics.data = topics
   }
   state.topics.loading = false
 }
