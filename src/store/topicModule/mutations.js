@@ -3,13 +3,13 @@ export function GET_TOPICS (state) {
   state.err = null
 }
 
-export function RECEIVE_TOPICS (state, topics, creating) {
-  if (!creating) {
-    for (let i=0; i<topics.length; i++) {
-      state.topics.data.push(topics[i])
+export function RECEIVE_TOPICS (state, payload) {
+  if (!payload.creating) {
+    for (let i=0; i<payload.topics.length; i++) {
+      state.topics.data.push(payload.topics[i])
     }
   } else {
-    state.topics.data = topics
+    state.topics.data = payload.topics
   }
   state.topics.loading = false
 }

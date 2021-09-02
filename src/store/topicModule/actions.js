@@ -26,7 +26,7 @@ export async function getAll ({ commit }, {limit = 10, offset = 0, searchText = 
   axios
     .get(`${host}/api/topics?limit=${limit}&offset=${offset}&searchText=${searchText}`)
     .then(response => {
-      commit('RECEIVE_TOPICS', response.data, creating)
+      commit('RECEIVE_TOPICS', {topics: response.data, creating: creating})
     })
     .catch(err => {
       console.log(err)
