@@ -8,6 +8,7 @@
         size="1"
         @click="scrollToSearch()"
         id="search"
+        autocomplete="off"
       >
       <span class="icon is-small is-right mt-4 is-search-icon">
           <i v-if="!searchText" class="fas fa-search"></i>
