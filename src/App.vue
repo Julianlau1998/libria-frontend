@@ -20,7 +20,7 @@ export default {
     loginModal () {
       return this.$store.state.login_modal
     }
-  }
+  },
   // async created () {
   //   setInterval(async () => {
   //     if (this.$auth.isAuthenticated) {

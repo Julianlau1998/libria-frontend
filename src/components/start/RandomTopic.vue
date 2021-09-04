@@ -30,7 +30,7 @@ export default {
             this.$store.dispatch('topicModule/getRandom')
             if (this.$route.params.uuid) {
                 this.topicModule.topic.data = this.randomTopic
-                this.$store.dispatch('answerModule/getAllByTopic', {topicId: this.randomTopic.id})
+                this.$store.dispatch('answerModule/getAllByTopic', {topicId: this.randomTopic.id, userId: this.$auth.user ? this.$auth.user.sub : ''})
             } else {
                 this.$router.push(
                     {

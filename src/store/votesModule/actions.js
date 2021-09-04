@@ -1,6 +1,9 @@
 import axios from 'axios'
-const host = 'https://api.libria-app.com'
-// const host = ''
+
+let host = 'https://api.libria-app.com'
+if (process.env.VUE_APP_ENV === "DEV") {
+  host = ''
+}
 
 const getUserId = () => {
   const userId = window.localStorage.getItem('userId')

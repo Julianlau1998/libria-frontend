@@ -36,6 +36,11 @@
 .commentInput::-webkit-input-placeholder {
     color: $white;
 }
+.is-comment-error {
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
+}
 
 @media (min-width: $tablet) {
     .searchInput, .modalInput {
@@ -56,5 +61,11 @@
 @media (max-width: $mobile) {
     .textarea:not([rows]) {
         min-height: 14rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .is-comment-error {
+        right: 0.1rem;
     }
 }

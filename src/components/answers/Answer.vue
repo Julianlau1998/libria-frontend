@@ -63,19 +63,29 @@
         </div>
     </div>
     <div>
-        <textarea
-            class="input commentInput"
-            v-model="comment"
-            placeholder="comment"
-            rows=30
-            ref="commentInput"
-        />
-        <button
-            @click="submitComment()" 
-            class="button is-warning commentButton mr-2"
-        >
-            <i class="fas fa-chevron-right" name="send"/>
-        </button>
+        <validationObserver v-slot="{ invalid, handleSubmit}" class="textarea-wrapper">
+            <form @submit.prevent="handleSubmit(onSubmit)">
+                <validationProvider rules="max:255" v-slot="{errors}">
+                    <textarea
+                        class="input commentInput"
+                        id="commentInput"
+                        v-model="comment"
+                        placeholder="comment"
+                        rows=30
+                        ref="commentInput"
+                    />
+                    <span class="is-error is-comment-error">
+                        {{ errors[0] }}&nbsp;
+                    </span>
+                </validationProvider>
+                    <button
+                        type="submit"
+                        class="button is-warning commentButton mr-2"
+                    >
+                        <i class="fas fa-chevron-right" name="send"/>
+                    </button>
+            </form>
+        </validationObserver>
     </div>
     <DeleteModal
         @deleteCard="deleteCard()"
@@ -87,13 +97,19 @@
 
 <script>
 import { mapState } from 'vuex'
+import { ValidationProvider, ValidationObserver, extend, max } from 'vee-validate'
 import card from '@/components/start/Card.vue'
 import DeleteModal from '@/components/modals/DeleteModal.vue'
 const chunk = require('chunk')
 
+extend('max', {
+  ...max,
+  message: 'Max 255'
+})
+
 export default {
     name: "answer",
-    components: { card, DeleteModal },
+    components: { card, DeleteModal, ValidationProvider, ValidationObserver },
     data () {
         return {
             answerId: '',
@@ -112,7 +128,7 @@ export default {
         }
     },
     methods: {
-        submitComment () {
+        onSubmit () {
             if (this.comment !== '' && this.$auth.isAuthenticated) {
                 const comment = {
                     body: this.comment,
