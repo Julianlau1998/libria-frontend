@@ -41,7 +41,7 @@ export async function getReported ({ commit }) {
   axios
     .get(`${host}/api/reported/topics?contentType=topic`)
     .then(response => {
-      commit('RECEIVE_TOPICS', response.data)
+      commit('RECEIVE_TOPICS', {topics: response.data, creating: false})
     })
     .catch(err => {
       console.log(err)

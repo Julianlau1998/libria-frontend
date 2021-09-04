@@ -75,6 +75,7 @@ export default {
         if (this.type === 'topics') {
             this.$store.dispatch('topicModule/getReported', {userId: this.$auth.user.sub})
         } else if (this.type === 'answers') {
+
             this.$store.dispatch('answerModule/getReported', {userId: this.$auth.user.sub})
         } else if (this.type === 'comments') {
             this.$store.dispatch('commentModule/getReported', {userId: this.$auth.user.sub})
@@ -104,26 +105,6 @@ export default {
                 return chunk(topics, 3)
             } else if (this.type === 'answers') {
                 let answers = (!this.answerModule.answers.loading && this.answerModule.answers.data) || [{"body":"Loading...","username":"Loading", "votes": []},{"body":"Loading...","username":"Loading","votes": []},{"body":"Loading...","username":"Loading", "votes": []}]
-                answers = answers.sort(function(a,b) {
-                    // ToDo imrove sorting
-                    let aVotes = 0
-                    a.votes.forEach(vote => {
-                        if (vote.upvote === 'true') {
-                            aVotes++
-                        } else if (vote.upvote === 'false') {
-                            aVotes--
-                        }
-                    })
-                    let bVotes = 0
-                    b.votes.forEach(vote => {
-                        if (vote.upvote === 'true') {
-                            bVotes++
-                        } else if (vote.upvote === 'false') {
-                            bVotes--
-                        }
-                    })
-                    return  bVotes - aVotes
-                });
                 return chunk(answers, 3)
             } else if (this.type === 'comments') {
                 let comments = (!this.commentModule.comments.loading && this.commentModule.comments.data) || [{"text":"Loading...","username":"Loading"},{"text":"Loading...","username":"Loading"},{"text":"Loading...","username":"Loading"}]
