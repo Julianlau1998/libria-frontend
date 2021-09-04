@@ -194,3 +194,11 @@ a.dropdown-item {
 .mb-8 {
     margin-bottom: 6rem;
 }
+
+
+/* Typography */
+@media (max-width: $tablet) {
+    .is-sub-header {
+        font-size: 93% !important;
+    }
+}
