@@ -28,6 +28,10 @@
       <a class="navbar-item" @click="goHome()">
           Home
       </a>
+      
+      <a class="navbar-item" @click="openInfoPage()" v-if="!$auth.loading">
+          Information
+      </a>
 
       <a class="navbar-item" @click="openProfile()" v-if="!$auth.loading">
         <span v-if="$auth.isAuthenticated">
@@ -40,6 +44,7 @@
           Moderation
         </span>
       </a>
+
       <br>
 <!-- 
       <a class="navbar-item">
@@ -114,6 +119,10 @@ export default {
       openModPage () {
         this.isActive = false
         this.$router.push('/admin')
+      },
+      openInfoPage () {
+        this.isActive = false
+        this.$router.push('/information')
       }
     },
     created () {

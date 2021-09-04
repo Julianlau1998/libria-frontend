@@ -28,7 +28,7 @@
                     <textarea
                         rules="required"
                         class="textarea is-primary is-textarea mt-1"
-                        placeholder="Optional: Your answer"
+                        placeholder="Optional: Your Definition"
                         style="border:solid 1px orange;"
                         v-model="topic.body"
                     ></textarea>

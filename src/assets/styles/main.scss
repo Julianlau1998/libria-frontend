@@ -64,7 +64,7 @@ html {
     opacity: 0.8;
 }
 #card-body-1 {
-    color: $warning;
+    color: $warningCardText;
 }
 #card-body-2 {
     color: $white;
@@ -150,6 +150,9 @@ a.dropdown-item {
 .dropdown-content {
     text-align: left;
 }
+.is-information-page {
+    padding: 0 2rem 0 2rem;
+}
 
 @media (max-width: $tablet) {
     .is-dropdown-item {
@@ -173,6 +176,9 @@ a.dropdown-item {
         width: 80%;
         margin: 0 auto;
     } 
+    .is-information-page {
+        padding: 0 17rem 0 17rem;
+    }
 }
 @media (max-width: $tablet) {
     .is-pill{

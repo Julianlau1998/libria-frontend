@@ -5,6 +5,7 @@ import Topic from '../views/Topic.vue'
 import Answer from '../views/Answer.vue'
 import Profile from '../views/Profile.vue'
 import Admin from '../views/Admin.vue'
+import Information from '../views/Information.vue'
 
 import { authGuard } from "../auth/authGuard";
 
@@ -39,7 +40,12 @@ const routes = [
     name: 'Admin',
     component: Admin,
     beforeEnter: authGuard
-  }
+  },
+  {
+    path: '/information',
+    name: 'Information',
+    component: Information,
+  },
 ]
 
 const router = new VueRouter({

@@ -26,7 +26,7 @@
         />
         <h1 class="is-heading is-size-4 mb-5">
             <b>
-                Answers:
+                Definitions:
             </b>
         </h1>
         <div

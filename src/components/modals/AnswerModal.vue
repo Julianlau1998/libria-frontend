@@ -1,7 +1,7 @@
 <template>
     <div class="modal is-active is-new-topic-modal">
         <h1 class="is-size-3 mb-2">
-            Add New Answer
+            Add New Definition
         </h1>
         <validationObserver v-slot="{ invalid, handleSubmit}" class="textarea-wrapper">
             <form @submit.prevent="handleSubmit(onSubmit)">
