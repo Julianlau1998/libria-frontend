@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Topic from '../views/Topic.vue'
-import Answer from '../views/Answer.vue'
-import Profile from '../views/Profile.vue'
-import Admin from '../views/Admin.vue'
-import Information from '../views/Information.vue'
+const Home = () => import('../views/Home.vue')
+const Topic = () => import('../views/Topic.vue')
+const Answer = () => import('../views/Answer.vue')
+const Profile = () => import('../views/Profile.vue')
+const Admin = () => import('../views/Admin.vue')
+const Information = () => import('../views/Information.vue')
 
 import { authGuard } from "../auth/authGuard";
 

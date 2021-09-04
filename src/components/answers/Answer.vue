@@ -97,7 +97,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { ValidationProvider, ValidationObserver, extend, max } from 'vee-validate'
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
+import { max } from 'vee-validate/dist/rules'
 import card from '@/components/start/Card.vue'
 import DeleteModal from '@/components/modals/DeleteModal.vue'
 const chunk = require('chunk')
