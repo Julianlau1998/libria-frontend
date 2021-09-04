@@ -3,8 +3,8 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "xyz.appmaker.gjnvqs",
-      "sha256_cert_fingerprints": ["BF:4F:55:B4:AC:DF:9D:B9:C9:70:9B:BA:C0:D5:38:EF:8D:05:DB:D8:1A:2B:11:FD:E0:B7:7C:E3:18:B2:71:47"]
+      "package_name": "com.libria_app.twa",
+      "sha256_cert_fingerprints": ["0A:8E:F8:F4:B0:16:AF:E5:E8:87:8E:91:FB:D5:22:D0:68:F0:96:E8:F6:94:C6:50:C8:FD:44:5E:72:2B:FE:ED"]
     }
   }
 ]
