@@ -4,7 +4,7 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.libria_app.twa",
-      "sha256_cert_fingerprints": ["0A:8E:F8:F4:B0:16:AF:E5:E8:87:8E:91:FB:D5:22:D0:68:F0:96:E8:F6:94:C6:50:C8:FD:44:5E:72:2B:FE:ED"]
+      "sha256_cert_fingerprints": ["29:85:1C:10:04:A6:10:D7:E5:38:4D:F3:F8:4A:8F:6F:92:BB:D2:C8:3C:C3:93:81:AE:8B:68:37:7C:47:A6:F7"]
     }
   }
 ]
