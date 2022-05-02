@@ -16,19 +16,49 @@ export default {
     navigation,
     LoginModal
   },
+  mounted () {
+    // this.$auth.getTokenSilently()
+    //   .then((token) => {
+    //     console.log(token)
+    //   })
+    //   .catch((err) => {
+    //     console.log('errrrrooooorrr:' + err)
+    //   })
+  },
   computed: {
     loginModal () {
       return this.$store.state.login_modal
+    },
+    authenticated () {
+      if (this.$auth.isAuthenticated) return true
+      if (!window.navigator.onLine) return true
+      return false
     }
   },
-  // async created () {
-  //   setInterval(async () => {
-  //     if (this.$auth.isAuthenticated) {
-  //       await this.$auth.getTokenSilently()
-  //       window.localStorage.setItem('userId', this.$auth.user.sub)
-  //     }
-  //   }, 36000)
-  // }
+  watch: {
+    authenticated (val) {
+      if (val  && window.navigator.onLine) {
+        this.$auth.getTokenSilently()
+          .then((token) => {
+            this.$store.dispatch('setAuthHeader', token)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+        setInterval(() => {
+          this.$auth.getTokenSilently()
+            .then((token) => {
+              this.$store.dispatch('setAuthHeader', token)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        }, 36000)
+      } else if (window.navigator.onLine) {
+          this.$auth.loginWithRedirect()
+      }
+    }
+  }
 }
 </script>
 
