@@ -113,7 +113,11 @@ export default {
             if (!this.edit) {
                 this.topic.username = this.$auth.user.nickname
                 this.topic.user_id = this.$auth.user.sub
-                this.$store.dispatch('topicModule/post', this.topic)
+                this.$auth.getTokenSilently()
+                .then((token) => {
+                    this.$store.dispatch('setAuthHeader', token)
+                    this.$store.dispatch('topicModule/post', this.topic)
+                })
                 this.$emit('closeModal')
             } else {
                 this.$store.dispatch('topicModule/put', this.topic)

@@ -1,4 +1,6 @@
 {
     "domain": "libria.eu.auth0.com",
-    "clientId": "dNm82ODzkalDTAA08BpcWe9Zm7kHvgAP"
+    "clientId": "dNm82ODzkalDTAA08BpcWe9Zm7kHvgAP",
+    "audience": "https://api.libria-app.com/",
+    "serverUrl": "http://192.168.178.87:1325"
   }

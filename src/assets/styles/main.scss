@@ -62,6 +62,7 @@ html {
 }
 .card-body {
     opacity: 0.8;
+    word-break: break-all;
 }
 #card-body-1 {
     color: $warningCardText;
