@@ -37,7 +37,7 @@ export default {
           this.$store.dispatch('setAuthHeader', token)
         })
         .catch(() => {
-          this.$auth.loginWithRedirect()
+          return
         })
     }, 500)
   },
