@@ -50,7 +50,12 @@
         margin-right: 26%;
     }
     .commentInput {
-        width: 89vw;
+        width: 85vw;
+    }
+}
+@media (max-width: 350px) {
+    .commentInput {
+        width: 70vw;
     }
 }
 @media (max-width: $tablet) {

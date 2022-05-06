@@ -16,14 +16,9 @@ export default {
     navigation,
     LoginModal
   },
-  mounted () {
-    // this.$auth.getTokenSilently()
-    //   .then((token) => {
-    //     console.log(token)
-    //   })
-    //   .catch((err) => {
-    //     console.log('errrrrooooorrr:' + err)
-    //   })
+  data () {
+    return {
+    }
   },
   computed: {
     loginModal () {
@@ -34,6 +29,17 @@ export default {
       if (!window.navigator.onLine) return true
       return false
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.$auth.getTokenSilently()
+        .then( (token) => {
+          this.$store.dispatch('setAuthHeader', token)
+        })
+        .catch(() => {
+          this.$auth.loginWithRedirect()
+        })
+    }, 500)
   },
   watch: {
     authenticated (val) {
